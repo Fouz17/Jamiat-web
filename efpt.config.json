@@ -26,6 +26,18 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[MenuMappingMaster]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MenuMappings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Menus]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Responsibilities]",
          "ObjectType": 0
       },
@@ -44,6 +56,10 @@
       {
          "Name": "[dbo].[Zones]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GetMenus]",
+         "ObjectType": 1
       }
    ],
    "UiHint": "vmi485907.fouz",

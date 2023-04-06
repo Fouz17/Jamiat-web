@@ -9,12 +9,14 @@ namespace Jamiat_web.Models
     {
         public Responsibilities()
         {
+            MenuMappingMaster = new HashSet<MenuMappingMaster>();
             UserRespMapping = new HashSet<UserRespMapping>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public virtual ICollection<MenuMappingMaster> MenuMappingMaster { get; set; }
         public virtual ICollection<UserRespMapping> UserRespMapping { get; set; }
     }
 }
