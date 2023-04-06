@@ -1,0 +1,67 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "JamiatContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": "Models",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "Jamiat_web",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Associations]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Halqa]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Ilaqa]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Responsibilities]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shaheens]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserRespMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Users]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Zones]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "vmi485907.fouz",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
