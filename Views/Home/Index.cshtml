@@ -1,8 +1,87 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    body {
+        background: #f5f5f5;
+    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    .card-img-tiles {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+        background-color: #fff;
+        z-index: 5
+    }
+
+        .card-img-tiles .main-img > img,
+        .card-img-tiles .thumblist > img {
+            display: block;
+            width: 100%
+        }
+
+        .card-img-tiles .main-img {
+            width: 67%;
+            padding-right: .375rem
+        }
+
+        .card-img-tiles .thumblist {
+            width: 33%;
+            padding-left: .375rem
+        }
+
+            .card-img-tiles .thumblist > img {
+                margin-bottom: .75rem
+            }
+
+                .card-img-tiles .thumblist > img:last-child {
+                    margin-bottom: 0
+                }
+
+    .mb-grid-gutter {
+        margin-bottom: 30px !important;
+    }
+</style>
+
+<div class="container pb-5 mb-sm-1">
+    <!-- Categories grid-->
+    <div class="row">
+        <!-- Category-->
+        <div class="col-md-4 col-sm-6">
+            <div class="card border-0 mb-grid-gutter">
+                <a class="card-img-tiles" href="shop-style1-ls.html">
+                    <div class="main-img"><img src="https://www.bootdey.com/image/340x326/FF8C00/000000" alt="Clothing"></div>
+                    <div class="thumblist"><img src="https://www.bootdey.com/image/175x164/FF8C00/000000" alt="Clothing"><img src="https://www.bootdey.com/image/175x164/FF8C00/000000" alt="Clothing"></div>
+                </a>
+                <div class="card-body border mt-n1 py-4 text-center">
+                    <h2 class="h5 mb-1">Arkaan</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Category-->
+        <div class="col-md-4 col-sm-6">
+            <div class="card border-0 mb-grid-gutter">
+                <a class="card-img-tiles" href="shop-style1-ls.html">
+                    <div class="main-img"><img src="https://www.bootdey.com/image/340x326/8A2BE2/000000" alt="Shoes"></div>
+                    <div class="thumblist"><img src="https://www.bootdey.com/image/175x164/8A2BE2/000000" alt="Shoes"><img src="https://www.bootdey.com/image/175x164/8A2BE2/000000" alt="Shoes"></div>
+                </a>
+                <div class="card-body border mt-n1 py-4 text-center">
+                    <h2 class="h5 mb-1">Rufqa</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Category-->
+        <div class="col-md-4 col-sm-6">
+            <div class="card border-0 mb-grid-gutter">
+                <a class="card-img-tiles" href="shop-style1-ls.html">
+                    <div class="main-img"><img src="https://www.bootdey.com/image/340x326/6495ED/000000" alt="Bags"></div>
+                    <div class="thumblist"><img src="https://www.bootdey.com/image/175x164/6495ED/000000" alt="Bags"><img src="https://www.bootdey.com/image/175x164/6495ED/000000" alt="Bags"></div>
+                </a>
+                <div class="card-body border mt-n1 py-4 text-center">
+                    <h2 class="h5 mb-1">Karkunan</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

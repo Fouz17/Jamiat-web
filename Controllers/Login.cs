@@ -10,7 +10,12 @@ namespace Jamiat_web.Controllers
     public class Login : Controller
     {
 
-        private readonly JamiatContext _context = new();
+        private readonly JamiatContext _context;
+
+        public Login(JamiatContext context)
+        {
+            _context = context;
+        }
 
         // GET: Login
         public ActionResult Index()

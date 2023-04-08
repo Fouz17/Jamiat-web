@@ -30,15 +30,6 @@ namespace Jamiat_web.Models
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Zones> Zones { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=161.97.142.142;Initial Catalog=fouz;Persist Security Info=True;User ID=fouz;Password=fouz;Encrypt=false;TrustServerCertificate=False;");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Associations>(entity =>
@@ -167,6 +158,9 @@ namespace Jamiat_web.Models
 
             modelBuilder.Entity<UserRespMapping>(entity =>
             {
+                entity.HasIndex(e => new { e.RespId, e.RespLevel }, "UniquesRespConstraint")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.RespLevel)

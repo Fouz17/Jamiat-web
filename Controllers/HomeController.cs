@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+#pragma warning disable CS8604
 namespace Jamiat_web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly JamiatContext db = new();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -15,7 +17,9 @@ namespace Jamiat_web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Task<List<GetMenusResult>> result = db.GetProcedures().GetMenusAsync(int.Parse(HttpContext.Session.GetString("UserId")));
+
+            return View(result);
         }
 
         public IActionResult Privacy()
