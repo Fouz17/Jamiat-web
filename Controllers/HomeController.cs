@@ -17,9 +17,7 @@ namespace Jamiat_web.Controllers
 
         public IActionResult Index()
         {
-            Task<List<GetMenusResult>> result = db.GetProcedures().GetMenusAsync(int.Parse(HttpContext.Session.GetString("UserId")));
-
-            return View(result);
+            return View();
         }
 
         public IActionResult Privacy()

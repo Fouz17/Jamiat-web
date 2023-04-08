@@ -22,6 +22,12 @@ namespace Jamiat_web.Controllers
             return View();
         }
 
+        public ActionResult AddMenu()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult AddMenu(string url, string name)
         {
             try
@@ -44,7 +50,7 @@ namespace Jamiat_web.Controllers
 
         public List<int> GetSelectedMenuIds(int masterId)
         {
-            var list = db.MenuMappingMaster.Where(r => r.Id == masterId).Select(s => s.Id).ToList();
+            var list = db.MenuMappings.Where(r => r.MasterId == masterId).Select(s => s.MenuId).ToList();
             return list;
         }
 

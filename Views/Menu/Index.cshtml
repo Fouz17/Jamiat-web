@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                 <label>Role</label>
-                <select class="form-control" id="role">
+                <select class="form-control" id="role" onchange="getSelectedMenuList();">
                     <option value="0">Select</option>
                     @foreach (var item in ViewBag.Roles)
                     {
@@ -27,9 +27,9 @@
         <div class="col-4 border border-dark pb-2 pt-2" id="menuItems">
             @foreach (var item in ViewBag.menuItems)
             {
-                <div class="m-1 form-control" onclick="check(this)">
-                    <input type="checkbox" id="@item.Menu" value="@item.Id" />
-                    <label for="@item.Menu">@item.Menu</label>
+                <div class="m-1 form-control" onclick="check(this);">
+                    <input type="checkbox" id="@item.Menu" value="@item.Id" onclick="check(this.parentNode);" />
+                    <label for="@item.Menu" onclick="check(this.parentNode);">@item.Menu</label>
                 </div>
             }
         </div>
@@ -45,7 +45,7 @@
 
     function getSelectedMenuList() {
         $.ajax({
-            url: "GetSelectedMenuIds",
+            url: "/Menu/GetSelectedMenuIds",
             data: {
                 masterId: $("#role").val()
             },

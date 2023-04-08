@@ -1,0 +1,38 @@
+﻿<ul class="navbar-nav flex-grow-1">
+    @*@foreach (var parent in ViewBag.MenuItems)
+    {
+    if (parent.menu_is_parent)
+    {
+    if (parent.menu_url != null)
+    {
+    <li class="nav-item">
+    <a class="nav-link text-dark" href="@parent.menu_url">@parent.menu_name</a>
+    </li>
+
+    }
+    else
+    {
+    <li class="dropdown">
+    <a class="nav-link text-dark">@parent.menu_name</a>
+    <div class="dropdown-content">
+    @foreach (var child in ViewBag.MenuItems)
+    {
+    if (child.menu_parent_id == parent.menu_id)
+    {
+    <a class="nav-link text-dark" href="@child.menu_url">@child.menu_name</a>
+    }
+    }
+    </div>
+    </li>
+    }
+    }
+    }*@
+    @foreach (var item in ViewBag.MenuItems)
+    {
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="@item.URL">@item.Menu</a>
+        </li>
+
+    }
+</ul>
