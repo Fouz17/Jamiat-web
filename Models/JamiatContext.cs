@@ -91,6 +91,10 @@ namespace Jamiat_web.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.RespLevel)
                     .HasMaxLength(10)
                     .IsUnicode(false);
@@ -193,6 +197,10 @@ namespace Jamiat_web.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("password");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.AssociationNavigation)
                     .WithMany(p => p.Users)

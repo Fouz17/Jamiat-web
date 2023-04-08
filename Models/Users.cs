@@ -16,6 +16,7 @@ namespace Jamiat_web.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public int Association { get; set; }
+        public string Status { get; set; }
 
         public virtual Associations AssociationNavigation { get; set; }
         public virtual ICollection<UserRespMapping> UserRespMapping { get; set; }

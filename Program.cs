@@ -3,7 +3,7 @@ using Jamiat_web.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddSession();
 builder.Services.AddSqlServer<JamiatContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
 
