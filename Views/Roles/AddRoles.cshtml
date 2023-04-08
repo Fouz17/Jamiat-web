@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+<div>
+    <h1>Create</h1>
+
+    <div class="d-flex justify-content-center h4">Rolemenu</div>
+    <hr />
+    <div>
+        <form action="/Roles/AddRoles" method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <input class="form-control" id='RoleName' name="roleName" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Responsibily</label>
+                    <select class="form-control" id="responsibility" name="respId">
+                        <option value="0">Select</option>
+                        @foreach (var item in ViewBag.responsibilities)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label id="levelLabel">Level</label>
+                    <select class="form-control" id="level" name="level">
+                        <option value="ZN">ZONE</option>
+                        <option value="IL">ILAQA</option>
+                        <option value="HL">HALQA</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <input type="submit" class="form-control btn btn-secondary" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr />
+</div>
+

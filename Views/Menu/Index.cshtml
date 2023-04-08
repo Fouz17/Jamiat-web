@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+<div>
+    <h1>Create</h1>
+
+    <div class="d-flex justify-content-center h4">Rolemenu</div>
+    <hr />
+    <div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label>Role</label>
+                <select class="form-control" id="role">
+                    <option value="0">Select</option>
+                    @foreach (var item in ViewBag.Roles)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row d-flex justify-content-center">
+        <div class="col-4 border border-dark pb-2 pt-2" id="menuItems">
+            @foreach (var item in ViewBag.menuItems)
+            {
+                <div class="m-1 form-control" onclick="check(this)">
+                    <input type="checkbox" id="@item.Menu" value="@item.Id" />
+                    <label for="@item.Menu">@item.Menu</label>
+                </div>
+            }
+        </div>
+        <div class="col-12">
+            <button class="btn btn-success float-right" onclick="SaveChanges()">Save Changes</button>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    function getSelectedMenuList() {
+        $.ajax({
+            url: "GetSelectedMenuIds",
+            data: {
+                masterId: $("#role").val()
+            },
+            success: (list) => {
+                console.log(list)
+                $("#menuItems input").map((index, input) => {
+                    let menuId = parseInt($(input).val());
+
+                    if (list.includes(menuId)) {
+                        $(input).prop("checked", true);
+                    } else {
+                        $(input).prop("checked", false);
+                    }
+                });
+            }
+        });
+    }
+
+
+    function check(e) {
+        let props = { "true": false, "false": true }
+        let checkStatus = ($(e).children("input").prop("checked")).toString();
+        $(e).children('input').prop("checked", props[checkStatus])
+    }
+
+    function SaveChanges() {
+        let selectedMenu = []
+        $("#menuItems input:checked").map((index, input) => {
+            selectedMenu.push($(input).val());
+        })
+
+        $.ajax({
+            url: '/Menu/SaveMenu',
+            method: 'post',
+            data: {
+                selectedMenu: selectedMenu,
+                masterId: $("#role").val()
+            },
+            success: function (res) {
+                if (res == "success") {
+                    window.location.reload();
+                    //$('#MenuBar').load('/Shared/Components/MenuBar/MenuBar.cshtml');
+                }
+            }
+        })
+
+    }
+
+
+</script>
