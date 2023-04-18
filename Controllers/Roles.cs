@@ -45,11 +45,27 @@ namespace Jamiat_web.Controllers
         }
 
         // GET: Roles/Details/5
-        public ActionResult Details(int id)
+        public ActionResult ManageRoles()
         {
+            ViewBag.Roles = db.MenuMappingMaster.ToList();
             return View();
         }
 
+        public string EditName(int id, string name)
+        {
+            try
+            {
+                var Role = db.MenuMappingMaster.Find(id) ?? new();
+                Role.Name = name;
+                db.SaveChanges();
+                return "success";
+
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
         // GET: Roles/Create
         public ActionResult Create()
         {

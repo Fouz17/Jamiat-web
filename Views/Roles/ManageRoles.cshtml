@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (MenuMappingMaster item in ViewBag.Roles)
+        {
+            <tr>
+                <td scope="row">
+                    @index
+                    @{
+                        index++;
+                    }
+                </td>
+                <td><input value="@item.Name" class="form-control" disabled /></td>
+                <td>
+                    <button class="btn-primary btn btn-sm" onclick="edit(this);">Edit</button>
+                    <button class="btn-success d-none btn btn-sm" onclick="editName(@item.Id,this.parentNode.parentNode);">Save</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+
+    const edit = (tr) => {
+        $(tr.parentNode.parentNode).find("input").removeAttr("disabled");
+        $(tr).addClass("d-none").removeClass("d-block");
+        $($(tr.parentNode).children()[1]).addClass("d-block").removeClass("d-none");
+    }
+
+    const editName = (id, tr) => {
+        $.ajax({
+            url: "/Roles/EditName",
+            data: {
+                id: id,
+                name: $(tr).find("input").val()
+            },
+            success: (res) => {
+                if (res === "success") {
+                    window.location.reload();
+                }
+            }
+        });
+    }
+
+</script>
