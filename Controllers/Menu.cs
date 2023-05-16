@@ -62,7 +62,7 @@ namespace Jamiat_web.Controllers
             {
                 if (!selectedMenu.Contains(id))
                 {
-                    var menu = db.MenuMappings.Where(m => m.MasterId == id).FirstOrDefault();
+                    var menu = db.MenuMappings.Where(m => m.MenuId == id).FirstOrDefault();
                     db.MenuMappings.Remove(menu);
                 }
             }
