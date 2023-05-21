@@ -9,17 +9,19 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Last</th>
+            <th scope="col">Association</th>
+            <th scope="col">Responsibilities</th>
             <th scope="col">Handle</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (Users item in ViewBag.Members)
+        @foreach (GetHalqaMembersResult item in ViewBag.Members)
         {
             <tr>
-                <th scope="row">@item.Id</th>
+                <th scope="row">@item.ID</th>
                 <td>@item.Name</td>
-                <td>Otto</td>
+                <td>@item.Association</td>
+                <td>@item.Responsibility</td>
                 <td><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Details</button></td>
             </tr>
         }
@@ -32,9 +34,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+
             </div>
             <div class="modal-body">
                 ...
@@ -46,3 +46,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    
+</script>

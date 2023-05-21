@@ -13,10 +13,16 @@ namespace Jamiat_web.Controllers
 
         public IActionResult HalqaMembers()
         {
-            int UserId = int.Parse(HttpContext.Session.GetString("UserId") ?? "0");
-            string status = db.UserRespMapping.Where(x => x.UserId == UserId).Select(x => x.RespLevel).FirstOrDefault()??"";
-            List<Users> users = db.Users.Where(x => x.Status == status && x.Id != UserId).ToList();
-            ViewBag.Members = users;
+            try
+            {
+                int UserId = int.Parse(HttpContext.Session.GetString("UserId") ?? "0");
+                string status = db.UserRespMapping.Where(x => x.UserId == UserId).Select(x => x.RespLevel).FirstOrDefault() ?? "";
+                List<GetHalqaMembersResult> users = db.GetProcedures().GetHalqaMembersAsync(status).Result;
+                ViewBag.Members = users;
+            }
+            catch (Exception e) {
+                ViewBag.Members = new List<GetHalqaMembersResult>();
+            }
             return View();
         }
     }
