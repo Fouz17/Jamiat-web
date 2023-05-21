@@ -8,6 +8,7 @@
    "ModelNamespace": null,
    "OutputContextPath": "Models",
    "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "Jamiat_web",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
@@ -58,13 +59,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[GetHalqaMembers]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[GetMenus]",
          "ObjectType": 1
       }
    ],
    "UiHint": "vmi485907.fouz",
+   "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
    "UseDbContextSplitting": false,
    "UseFluentApiOnly": true,
    "UseHandleBars": false,
@@ -72,12 +79,11 @@
    "UseInflector": false,
    "UseLegacyPluralizer": false,
    "UseManyToManyEntity": false,
-   "UseNoConstructor": false,
    "UseNoDefaultConstructor": false,
-   "UseNoNavigations": false,
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,
    "UseSchemaFolders": false,
-   "UseSpatial": false
+   "UseSpatial": false,
+   "UseT4": false
 }

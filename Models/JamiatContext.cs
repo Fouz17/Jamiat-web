@@ -89,6 +89,9 @@ namespace Jamiat_web.Models
 
             modelBuilder.Entity<MenuMappingMaster>(entity =>
             {
+                entity.HasIndex(e => new { e.RespId, e.RespLevel }, "UniqueIdetifier")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name)
@@ -130,6 +133,9 @@ namespace Jamiat_web.Models
 
             modelBuilder.Entity<Menus>(entity =>
             {
+                entity.HasIndex(e => e.Url, "URL")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Menu)

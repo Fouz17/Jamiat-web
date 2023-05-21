@@ -12,9 +12,9 @@ namespace Jamiat_web.Models
 {
     public partial class JamiatContext
     {
-        private JamiatContextProcedures _procedures;
+        private IJamiatContextProcedures _procedures;
 
-        public virtual JamiatContextProcedures Procedures
+        public virtual IJamiatContextProcedures Procedures
         {
             get
             {
@@ -27,20 +27,16 @@ namespace Jamiat_web.Models
             }
         }
 
-        public JamiatContextProcedures GetProcedures()
+        public IJamiatContextProcedures GetProcedures()
         {
             return Procedures;
         }
 
         protected void OnModelCreatingGeneratedProcedures(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<GetHalqaMembersResult>().HasNoKey().ToView(null);
             modelBuilder.Entity<GetMenusResult>().HasNoKey().ToView(null);
         }
-    }
-
-    public interface IJamiatContextProcedures
-    {
-        Task<List<GetMenusResult>> GetMenusAsync(int? UserId, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
     }
 
     public partial class JamiatContextProcedures : IJamiatContextProcedures
@@ -50,6 +46,33 @@ namespace Jamiat_web.Models
         public JamiatContextProcedures(JamiatContext context)
         {
             _context = context;
+        }
+
+        public virtual async Task<List<GetHalqaMembersResult>> GetHalqaMembersAsync(string halqaId, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "halqaId",
+                    Size = 50,
+                    Value = halqaId ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<GetHalqaMembersResult>("EXEC @returnValue = [dbo].[GetHalqaMembers] @halqaId", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
         }
 
         public virtual async Task<List<GetMenusResult>> GetMenusAsync(int? UserId, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
