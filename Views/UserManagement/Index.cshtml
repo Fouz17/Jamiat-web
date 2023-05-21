@@ -7,19 +7,19 @@
 <form class="row g-3" asp-action="add" asp-controller="UserManagement">
     <div class="col-md-6">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name">
+        <input type="text" class="form-control" id="name" name="name">
     </div>
     <div class="col-md-6">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
+        <input type="password" class="form-control" id="password" name="password">
     </div>
     <div class="col-12 d-none">
         <label for="inputAddress" class="form-label">Address</label>
-        <input type="hidden" class="form-control" id="status" value="@TempData["status"]">
+        <input type="hidden" class="form-control" id="status" name="status" value="@TempData["status"]">
     </div>
     <div class="col-md-12">
         <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
+        <select id="inputState" class="form-select" name="Association">
             @foreach (Associations item in ViewBag.Associations)
             {
                 <option value="@item.Id">@item.Name</option>

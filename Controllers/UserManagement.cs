@@ -1,5 +1,7 @@
 ﻿using Jamiat_web.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Jamiat_web.Controllers
 {
@@ -21,9 +23,23 @@ namespace Jamiat_web.Controllers
         }
 
         [HttpPost]
-        public Users Add(Users obj)
+        public IActionResult Add(Users obj)
         {
-            return new();
+            try
+            {
+                byte[] inputBytes = Encoding.ASCII.GetBytes(obj.Password);
+                using MD5 md5 = MD5.Create();
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                obj.Password = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+
+                db.Users.Add(obj);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return Index();
         }
 
         public ActionResult AddShaheen()
